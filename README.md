@@ -1,3 +1,3 @@
 ## SCT1
 
-# opleiding Game Development op Mediacollege Amsterdam
+# opleiding Game Development op Mediacollege Amsterdam :)
