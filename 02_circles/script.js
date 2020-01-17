@@ -26,7 +26,7 @@ function getRandomNumber(max){
 function drawCircle(){
   context.beginPath()
   context.fillStyle = colors[getRandomNumber(colors.length)];
-  context.arc(getRandomNumber(width),getRandomNumber(height),20,0,Math.PI*2);
+  context.arc(getRandomNumber(width),getRandomNumber(height),getRandomNumber(100),0,Math.PI*2);
   context.stroke();
   context.fill();
   context.closePath();

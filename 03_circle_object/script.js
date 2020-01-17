@@ -10,40 +10,41 @@ const height = window.innerHeight;
 canvas.width = width;
 canvas.height = height;
 
-// -------------------------------------------------------
+//start circleObject
 
-// context.beginPath()
-// context.fillstyle = "black";
-// context.arc(400,300,20,0,Math.PI*2);
-// context.stroke();
-// context.fill();
-// context.closePath();
+let circleObject = {};
+circleObject.x = 100;
+circleObject.y = 100;
+circleObject.radius = 40;
+circleObject.color = "purple";
+circleObject.speedX = 3;
+circleObject.speedY = 4;
 
-let circleObject = {}
-circleObject.x = 200;
-circleObject.y = 300;
-circleObject.radius = 20;
-circleObject.sAngle = 0;
-circleObject.eAngle = Math.PI *2;
-circleObject.color = "black";
-circleObject.velocity_x = 100;
-circleObject.velocity_y = 100;
-
-
-circleObject.draw = function() {
-  context.beginPath()
-  context.arc(this.x,this.y,this.radius,this.sAngle,this.eAngle);
-  context.closePath();
+circleObject.draw = function(){
+  context.beginPath();
+  context.fillStyle = "black";
+  context.arc(circleObject.x,circleObject.y,circleObject.radius,0,2*Math.PI);
   context.stroke();
-  context.fillstyle = this.color;
-  context.fill()
+  context.fill();
 }
 
-
-function animate(){
-  context.clearRect(0,0,width,height)
-  circleObject.x += 2;
-  circleObject.draw()
+circleObject.update = function(){
+  circleObject.x = circleObject.x + circleObject.speedX;
+  circleObject.y = circleObject.y + circleObject.speedY;
+  if(circleObject.y > height - circleObject.radius || circleObject.y < circleObject.radius){
+    circleObject.speedY = - circleObject.speedY ;
+  }
+  if(circleObject.x > width - circleObject.radius || circleObject.x < circleObject.radius){
+    circleObject.speedX = - circleObject.speedX ;
+  }
 }
 
-setInterval(animate,10);
+// einde circleObject
+
+function loop(){
+  context.clearRect(0,0,width,height);
+  circleObject.update();
+  circleObject.draw();
+}
+
+setInterval(loop,10)
